@@ -214,7 +214,7 @@ public extension OnboardingService {
                          finishedCallback: @escaping OnboardingFinishResult) {
         do {
             let localPath = try OnboardingLoadingService.getUrlFor(jsonName: localJSONFileName)
-            let appearance: OnboardingService.AppearanceStyle = .default
+            let appearance: OnboardingService.AppearanceStyle =  self.appearance ?? .default
             let loadOptions = LoadConfiguration.Options.useLocalAfterTimeout(localPath: localPath,
                                                                              timeout: useLocalJSONAfterTimeout)
             let loadConfiguration = LoadConfiguration.init(projectId: projectId,
@@ -251,6 +251,7 @@ public extension OnboardingService {
         do {
             let localScreenGraph = try OnboardingLoadingService.getOnboardingFromLocalJsonName(localJSONFileName)
             let config = RunConfiguration.init(screenGraph: localScreenGraph,
+                                               appearance: (self.appearance ?? .default),
                                                launchWithAnimation: launchWithAnimation)
             
             OnboardingService.shared.startOnboarding(configuration: config,
