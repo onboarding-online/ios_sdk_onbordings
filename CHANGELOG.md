@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.1.10](https://github.com/onboarding-online/swift-onboarding-sdk/compare/v1.1.9...v1.1.10) (2025-02-21)
+
+
+### Current Version Changes
+
+* added flag for disabling the paywall scroll, updated paywall gradient ([2b94a1c](https://github.com/onboarding-online/swift-onboarding-sdk/commit/2b94a1c81a4cb581972262b42d927c08a5f87422))
+* allow to use appearance ([61b798b](https://github.com/onboarding-online/swift-onboarding-sdk/commit/61b798b685a4fc14e60f9f30bd64c2e0c1148561))
+
 ### [1.1.9](https://github.com/onboarding-online/swift-onboarding-sdk/compare/v1.1.8...v1.1.9) (2025-01-19)
 
 
