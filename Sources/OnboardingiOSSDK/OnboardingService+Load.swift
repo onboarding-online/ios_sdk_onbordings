@@ -252,10 +252,13 @@ public extension OnboardingService {
                              finishedCallback: @escaping OnboardingFinishResult) {
         do {
             let localScreenGraph = try OnboardingLoadingService.getOnboardingFromLocalJsonName(localJSONFileName)
+            let url = try OnboardingLoadingService.getUrlFor(jsonName: localJSONFileName)
+
             let config = RunConfiguration.init(screenGraph: localScreenGraph,
                                                appearance: (self.appearance ?? .default),
                                                launchWithAnimation: launchWithAnimation)
-            
+            OnboardingLoadingService.registerSourceTypeEvent(localPath: url, timeout: 0.0, screenGraph: localScreenGraph)
+
             OnboardingService.shared.startOnboarding(configuration: config,
                                                      finishedCallback: finishedCallback)
         } catch {
