@@ -30,6 +30,8 @@ public extension OnboardingService {
                                           finishedCallback: @escaping OnboardingFinishResult) {
         let preparationState = OnboardingPreparationService.onboardingPreparationState(projectId: projectId, env: env)
         
+        let appearance = self.appearance ?? .default
+        
         self.projectId = projectId
         //print("------- onboarding assets loading state \(preparationState)")
         func startNew() {
@@ -47,7 +49,7 @@ public extension OnboardingService {
         
         switch preparationState {
         case .notStarted, .failed:
-            showLoadingAssetsScreen(appearance: .default,
+            showLoadingAssetsScreen(appearance: appearance,
                                     launchWithAnimation: launchWithAnimation)
             startNew()
         case .preparing:
@@ -65,7 +67,7 @@ public extension OnboardingService {
                 }
             }
             
-            showLoadingAssetsScreen(appearance: .default,
+            showLoadingAssetsScreen(appearance: appearance,
                                     launchWithAnimation: launchWithAnimation)
             OnboardingPreparationService.onPreparedWithResult(projectId: projectId, env: env) { result in
                 syncQueue.sync {
